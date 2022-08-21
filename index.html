@@ -5,8 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GigaDrop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    Hello world
+  <div class="container">
+    <div class="col-left">
+
+
+        <div class="left-box">
+                 
+            <p id="drop_zone_text">Drag one or more files to this <i>drop zone</i>.<br></p>
+            
+            <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+              
+                    <input type="file" id="fileinput">
+                     
+                
+            </div>
+
+             
+              <br>
+<button id="sendFileBtn">send</button> 
+        </div>
+
+
+    </div>
+    <div class="col-right">
+        <div class="right-box">
+            <img src="logo.png"  height="80px"/>
+            <br>
+            Welcome to GigaDrop. <br>Share Large files Securly to Other Device
+             <br>
+             <div class="roomcode-box">
+                Your Room Code:<br><input type="text" />
+             </div>
+           
+        </div>
+    </div>
+  </div>
+
+  <script>
+    function dragOverHandler(ev) {
+  console.log('File(s) in drop zone');
+
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+}
+    function dropHandler(ev) {
+  console.log('File(s) dropped');
+
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+  document.body.style.backgroundColor = "lightgreen";
+  document.getElementById('fileinput').value = event.dataTransfer.getData('file');
+var filename=ev.dataTransfer.files[0].name;
+ 
+
+  $('#drop_zone_text').html(filename+"<br>Start sending file now!")
+  $('#sendFileBtn').show()
+  $('#fileinput').hide()
+   
+} 
+
+$("document").ready(function(){
+
+$("#fileinput").change(function() {
+    $('#drop_zone_text').html("File Dropped. Start sending file now!")
+  $('#sendFileBtn').show()
+});
+});
+ 
+  </script>
 </body>
 </html>

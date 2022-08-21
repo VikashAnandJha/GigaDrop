@@ -1,0 +1,119 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Comfortaa';
+    font-size: 15px;
+     
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.col-left{
+    background-color: #4D6674;
+    flex: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+
+}
+.col-right{
+    background-color: #324D5D;
+    flex: 35%;
+    display: flex;
+     padding: 10px;
+     align-items: center;
+justify-content: center;
+}
+.right-box{
+     
+    
+    text-align: center;
+    
+}
+.left-box{
+     
+    
+    text-align: center;
+     
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+}
+
+
+.roomcode-box{
+    margin-top: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+padding: 10px;
+border-radius: 10px;
+}
+.roomcode-box>input{
+    margin: 10px;
+    padding: 10px;
+    border:2px solid #4D6674;
+    background-color: #4D6674;
+    border-radius: 5px;
+    color: greenyellow;
+    font-weight: 800;
+
+}
+#fileinput{
+    cursor: pointer;
+    position: relative;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #324D5D;
+    flex: 1;
+    opacity: 0;
+    
+}
+#drop_zone {
+    position: relative;
+    border: 5px dashed #324D5D;
+    width: 50vw;
+    height: 50vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+     
+     
+  }
+  #sendFileBtn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background-color: aquamarine;
+color: black;
+cursor: pointer;
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #324D5D;
+display: block;
+margin: 5px;
+width: 50%;
+font-weight: bolder;
+ 
+  }
+  #sendFileBtn:hover{
+    background-color: greenyellow;
+
+  }
+  #drop_zone_text{
+  position: relative;
+  top: 0;
+  left: 0;
+  color: aquamarine;
+
+  }
