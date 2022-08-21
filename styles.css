@@ -117,3 +117,60 @@ font-weight: bolder;
   color: aquamarine;
 
   }
+  .drop-area{
+   
+  }
+  .fileprogress-box{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    
+
+  }
+  .progress{
+    
+    margin-top: 5px;
+    font-size: 55px;
+    color: aquamarine;
+    font-weight: bold;
+    
+  }
+  .progress-bar{
+    border: 1px solid #324D5D;
+  }
+  .progress-bar-fill{
+    background-color: aquamarine;
+    width: 0%;
+    height: 25px;
+  }
+  .stats-area{
+    display: none;
+    width: 50vw;
+  }
+  .info-box{
+    background-color: black;
+    color: aquamarine;
+    font-size: 8px;
+    padding: 4px;
+    margin: 5px;
+     
+  }
+  #filename-text{
+    color: yellowgreen;
+  }
+  msglist>a{
+  font-size: 10px;
+text-decoration: none;
+color: lightcoral;
+display: block;
+  }
+  msglist{
+    height: 100px;
+    overflow: scroll; 
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  

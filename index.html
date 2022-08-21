@@ -12,24 +12,45 @@
 
 </head>
 <body>
+    <script>
+            var room_id= (Math.random() + 1).toString(36).substring(2);
+
+    </script>
   <div class="container">
     <div class="col-left">
 
 
         <div class="left-box">
-                 
-            <p id="drop_zone_text">Drag one or more files to this <i>drop zone</i>.<br></p>
+           
+            <div class="drop-area">
+                <p id="drop_zone_text">Drag one or more files to this <i>drop zone</i>.<br></p>
             
-            <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-              
-                    <input type="file" id="fileinput">
-                     
-                
+                <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                  
+                        <input type="file" id="fileinput">
+                         
+                    
+                </div>
+    
+                 
+                  <br>
+    <button id="sendFileBtn">send</button> 
             </div>
 
-             
-              <br>
-<button id="sendFileBtn">send</button> 
+            <div class="stats-area">
+
+                <div class="fileprogress-box">
+                    <span id="filetransfer-text">Uploading</span> <span id="speed"></span> <br>
+                    <span id="filename-text"></span><br>
+                    <div class="progress" id="progress">0%</div>
+          
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="height:24px;"></div>
+                      </div>
+                </div>
+
+            </div>
+           
         </div>
 
 
@@ -41,9 +62,26 @@
             Welcome to GigaDrop. <br>Share Large files Securly to Other Device
              <br>
              <div class="roomcode-box">
-                Your Room Code:<br><input type="text" />
+                Your Room Code:<br><input type="text" id="room_id" />
              </div>
-           
+             <br>
+             <msglist></msglist>
+             <br>
+             <div class="info-box">
+                My Peer ID: <mypeerid></mypeerid>
+                <br>
+                             
+                
+                
+                <p class="speedlogs"></p>
+                 
+                             PeerList
+                             <list>
+                            
+                             </list>
+                           
+             </div>
+             
         </div>
     </div>
   </div>
@@ -80,5 +118,79 @@ $("#fileinput").change(function() {
 });
  
   </script>
+  
+  <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+  
+  <script  >
+       
+  
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAE7inEQPaHGgsnMx2CUrrlGRTpbip7RE0",
+        authDomain: "webch-9ddf2.firebaseapp.com",
+        databaseURL: "https://webch-9ddf2.firebaseio.com",
+        projectId: "webch-9ddf2",
+        storageBucket: "webch-9ddf2.appspot.com",
+        messagingSenderId: "884619352461",
+        appId: "1:884619352461:web:736f9656b77169ea6105c4"
+      };
+    
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+   // Initialize Realtime Database and get a reference to the service
+  const database = firebase.database();
+     
+     // const database = getDatabase(app);
+  
+    </script>
+  
+    <script>
+  
+     
+  const peers_list = [];
+  
+       
+      var usersRef=database.ref('users/rooms/testroom/users');
+      usersRef.on('value',(snap)=>{
+     // console.log(snap.val());
+      snap.forEach(function(childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        console.log(childKey)
+        if(!peers_list.includes(childKey) && childKey!=mypeerid)
+        {
+          //new user
+          $('list').append('<p id="'+childKey+'">'+childKey+' </p>')
+          peers_list.push(childKey)
+  
+          connectPeer(childKey)
+            }    // database.ref('users/FBTest/'+childKey).onDisconnect().remove();
+        // ...
+      });
+     // database.ref('users/FBTest').child("-N8uxGTm-xHmaosCBMxq").onDisconnect().removeValue();
+       
+  
+    });
+  
+    usersRef.on('child_removed', (data) => {
+    console.log("Removed:"+data.key)
+    $('#'+data.key).remove();
+  });
+  
+  
+    </script>
+    <script>
+        $('#room_id').val(room_id)
+    </script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="scripts.js"></script>
+  
+
 </body>
 </html>
