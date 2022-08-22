@@ -2,7 +2,7 @@
 
 
 
-var room_id = "testroom";// getParameterByName('room_code'); 
+//var room_id = "testroom";// getParameterByName('room_code'); 
  
 var call;
 var mypeerid;
@@ -267,6 +267,16 @@ $('.progress-bar-fill').attr('style',  'width:'+recProgress+'%');
     setTimeout(function(){
         $('.drop-area').show();
         $('.stats-area').hide();
+         
+            var speed=0
+            var sdata = {};
+            sdata.type="progress_info";
+            sdata.msg=100; 
+            sdata.speed=0;
+            console.log("trying to send",sdata)
+          
+            sendMsg(sdata)
+           
     },500)
     
      const received = new Blob(arrayToStoreChunks);

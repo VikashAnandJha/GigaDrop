@@ -57,13 +57,15 @@ padding: 10px;
 border-radius: 10px;
 }
 .roomcode-box>input{
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     border:2px solid #4D6674;
     background-color: #4D6674;
     border-radius: 5px;
     color: greenyellow;
     font-weight: 800;
+    font-size: 12px;
+    width: 80%;
 
 }
 #fileinput{
