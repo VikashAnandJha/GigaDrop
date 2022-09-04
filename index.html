@@ -36,8 +36,15 @@ if(getParameterByName("room_id")==undefined)
 
 
         <div class="left-box">
+
+          <div class="waiting-area">
+
+          <h2>Waiting for Peer</h2>
+          <img src="https://thumbs.gfycat.com/MadeupWillingKronosaurus-max-1mb.gif" />
+
+          </div>
            
-            <div class="drop-area">
+            <div class="drop-area" style="display: none;">
                 <p id="drop_zone_text">Drag one or more files to this <i>drop zone</i>.<br></p>
             
                 <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
@@ -175,11 +182,15 @@ $("#fileinput").change(function() {
       usersRef.on('value',(snap)=>{
      // console.log(snap.val());
       snap.forEach(function(childSnapshot) {
+
+        
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
         console.log(childKey)
         if(!peers_list.includes(childKey) && childKey!=mypeerid)
         {
+          $('.waiting-area').hide();
+        $('.drop-area').show()
           //new user
           $('list').append('<p id="'+childKey+'">'+childKey+' </p>')
           peers_list.push(childKey)
@@ -196,6 +207,10 @@ $("#fileinput").change(function() {
     usersRef.on('child_removed', (data) => {
     console.log("Removed:"+data.key)
     $('#'+data.key).remove();
+
+
+
+
   });
   
   
